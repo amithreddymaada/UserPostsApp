@@ -4,6 +4,7 @@ from .models import Question,Choice
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -56,7 +57,7 @@ class ResultView(generic.DetailView):
     model=Question
 
 
-
+@login_required
 def vote(request,id):
     question=get_object_or_404(Question,pk=id)
     try:
