@@ -1,26 +1,14 @@
-{% load static %}
+{% extends "blog/base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link type='text/css' rel='stylesheet' href="{% static 'polls/styles.css' %}">
-</head>
-<body>
-    <ul>
+{% block content %}
     {% if question %}
         {% for q in question %}
-        <li class="container-item"><a href="{% url 'polls:details' q.id %}">{{q.question_text}}</a></li>
+            <li class="container-item"><a href="{% url 'polls:details' q.id %}">{{q.question_text}}</a></li>
         {% endfor %}
     {% else %}
         <p>No polls are available</p>
     {% endif %}
-    </ul>
-    
-</body>
-</html>
+{% endblock content %}
 
 
 
