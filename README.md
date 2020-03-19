@@ -11,4 +11,6 @@ This is a simple userpostsapp made by django framework
 5)change password for the user profile
 6)add picture for user
 
+Also a simple polls app .
+
 url:https://userpostsapp.herokuapp.com
