@@ -5,7 +5,7 @@
     {{question.question_text}}
 </h1>
 {% for c in question.choice_set.all %}
-    <p>{{c.choice_text}}---{{c.votes}}</p>
+    <p class="lead">{{c.choice_text}}---{{c.votes}}</p>
 {% endfor %}
-<a href="{% url 'polls:details' question.id %}">want to vote again</a>
+<a href="{% url 'polls:details' question.id %}" class="btn btn-info">want to vote again</a>
 {% endblock content %}

@@ -1,6 +1,6 @@
 {% extends "blog/base.html" %}
 {% block content %}
-    <h1 >
+    <h1 class="page-header">
         {{question.question_text}}
     </h1>
     {% if error_message %}<p><strong>{{error_message}}</strong></p>{% endif %}
@@ -8,10 +8,12 @@
     <form action="{% url 'polls:vote' question.id %}" method="POST">
         {% csrf_token %}
         {% for c in question.choice_set.all %}
-        <input type="radio" name="choice" id="choice{{forloop.Counter}}" value="{{c.id}}">
-        <label for="choice{{forloop.Counter}}" >{{c.choice_text}}</label><br>
+            <div class="form-group">
+                <input type="radio" name="choice" id="choice{{forloop.Counter}}" value="{{c.id}}">
+                <label for="choice{{forloop.Counter}}" class="checkbox">{{c.choice_text}}</label><br>
+            </div>
         {% endfor %}
 
-        <button type="submit">submit</button>
+        <button type="submit" class="btn btn-success">submit</button>
     </form>
 {% endblock content %}
