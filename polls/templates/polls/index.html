@@ -3,7 +3,7 @@
 {% block content %}
     {% if question %}
         {% for q in question %}
-            <li class="container-item"><a href="{% url 'polls:details' q.id %}">{{q.question_text}}</a></li>
+            <li class="list-group-item"><a href="{% url 'polls:details' q.id %}">{{q.question_text}}</a></li>
         {% endfor %}
     {% else %}
         <p>No polls are available</p>
