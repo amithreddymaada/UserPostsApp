@@ -52,10 +52,12 @@ class PostsCreateView(LoginRequiredMixin,CreateView):
 
     def form_valid(self,form):
         form.instance.author =self.request.user
-        subject="Post created by User"
+        subject=f"New Post added by {self.request.user}"
         from_email=settings.EMAIL_HOST_USER
-        to_email=[settings.EMAIL_HOST_USER]
-        contact_message = f"new post added by{self.request.user}"
+        to_email=[]
+        for user in User.objects.all():
+            to_email.append(user.email)
+        contact_message = f"title of post:{form.instance.title}      descritption of post:{form.instance.descritption}"
         send_mail(subject,contact_message,from_email,to_email,fail_silently=True)
     
         return super().form_valid(form)
