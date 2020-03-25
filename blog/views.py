@@ -52,7 +52,7 @@ class PostsCreateView(LoginRequiredMixin,CreateView):
 
     def form_valid(self,form):
         form.instance.author =self.request.user
-
+        subject="Post created by User"
         from_email=settings.EMAIL_HOST_USER
         to_email=[settings.EMAIL_HOST_USER]
         contact_message = f"new post added by{self.request.user}"
