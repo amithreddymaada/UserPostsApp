@@ -57,7 +57,7 @@ class PostsCreateView(LoginRequiredMixin,CreateView):
         to_email=[]
         for user in User.objects.all():
             to_email.append(user.email)
-        contact_message = f"title of post:{form.instance.title}      descritption of post:{form.instance.description}"
+        contact_message = f"Title of Post:{form.instance.title}  Go and Check the post https://userpostsapp.herokuapp.com/"
         send_mail(subject,contact_message,from_email,to_email,fail_silently=True)
     
         return super().form_valid(form)
