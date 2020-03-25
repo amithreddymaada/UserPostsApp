@@ -42,12 +42,22 @@ class UserPostsListView(LoginRequiredMixin,ListView):
 class PostsDetailView(LoginRequiredMixin,DetailView):
     model = Posts
 
+from django.conf import settings
+from django.core.mail import send_mail
+from django.template.loader import get_template
+
 class PostsCreateView(LoginRequiredMixin,CreateView):
     model = Posts
     fields = ['title','content']
 
     def form_valid(self,form):
         form.instance.author =self.request.user
+
+        from_email=settings.EMAIL_HOST_USER
+        to_email=[settings.EMAIL_HOST_USER]
+        contact_message = f"new post added by{self.request.user}"
+        send_mail(subject,contact_message,from_email,to_email,fail_silently=True)
+    
         return super().form_valid(form)
 
 class PostsUpdateView(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
