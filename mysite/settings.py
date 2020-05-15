@@ -59,7 +59,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,17 +73,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
-ASGI_APPLICATION = 'mysite.routing.application'
 
-
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
-        },
-    },
-}
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -96,16 +86,15 @@ CHANNEL_LAYERS = {
 # }
 
 DATABASES = {
-    'default' : {
-        'ENGINE' : 'django.db.backends.mysql',
-        'NAME' : 'mysite',
-        'USER' : 'AMITH',
-        'PASSWORD' : '',
-        'HOST' : 'localhost',
-        'PORT' :'3306',
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mysite',
+        'USER': 'AMITH',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
-
 
 
 # Password validation
@@ -144,7 +133,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR , 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # STATICFILES_DIRS =[
@@ -153,7 +142,7 @@ STATIC_URL = '/static/'
 
 # STATIC_ROOT=os.path.join(BASE_DIR,'assets')
 
-MEDIA_ROOT = os.path.join(BASE_DIR , 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -169,7 +158,4 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
 django_heroku.settings(locals())
-
-
-
 
