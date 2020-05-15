@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+    <h1 class="site-header lead">Users</h1>
+    <ul class="list-group">
+    {% for user in users %}
+        <li class="list-group-item">{{user.username}}   
+            <div class="float-right">
+                <a href="{{current_user}}/{{user.username}}/" class="btn btn-success ">Chat</a>
+                <a href="{{current_user}}/{{user.username}}/delete/" class="btn btn-danger ">Delete Chat</a>
+            </div>
+        </li>
+    {% endfor %}
+    </ul><br>
+    <hr>
+    <a class="btn-sm" href="{% url 'blog-home' %}"> Home</a>
+{% endblock content %}
